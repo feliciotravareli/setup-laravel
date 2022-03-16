@@ -58,12 +58,37 @@
             "@php artisan key:generate --ansi"
         ],
         "fix": [
-            "./vendor/bin/phpcbf",
-            "./vendor/bin/php-cs-fixer fix --using-cache=no"
+            "@phpcbf",
+            "@php-cs-fixer"
         ],
-        "cs": [
-            "./vendor/bin/phpcs"
+        "scan": [
+            "@phpcs",
+            "@phpstan"
+        ],
+        "test": [
+            "@scan",
+            "@pest"
+        ],
+        "php-cs-fixer": "./vendor/bin/php-cs-fixer fix --using-cache=no",
+        "pest": "./vendor/bin/pest --parallel",
+        "phpcbf": "./vendor/bin/phpcbf",
+        "phpcs": "./vendor/bin/phpcs",
+        "phpstan": "./vendor/bin/phpstan analyse --no-progress --ansi --memory-limit 256M",
+        "pre": [
+            "@phpstan",
+            "@phpcs",
+            "@php-cs-fixer --dry-run --verbose --stop-on-violation",
+            "@pest"
         ]
+    },
+    "scripts-descriptions": {
+        "pre": "Runs Pre push tests",
+        "pest": "Runs Pest tests",
+        "phpcbf": "Runs PHP_CodeSniffer fixes",
+        "phpcs": "Runs PHP_CodeSniffer tests",
+        "phpstan": "Runs PHPStan tests",
+        "scan": "Runs all scans!",
+        "test": "Runs all tests!"
     },
     "extra": {
         "laravel": {
