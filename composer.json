@@ -56,6 +56,15 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "fix": [
+            "./vendor/bin/php-cs-fixer fix --using-cache=no"
+        ],
+        "cbf": [
+            "./vendor/bin/phpcbf ./ --standard=phpcs.xml"
+        ],
+        "cs": [
+            "./vendor/bin/phpcs ./ --standard=phpcs.xml"
         ]
     },
     "extra": {
