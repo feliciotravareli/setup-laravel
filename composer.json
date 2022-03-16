@@ -58,13 +58,11 @@
             "@php artisan key:generate --ansi"
         ],
         "fix": [
+            "./vendor/bin/phpcbf",
             "./vendor/bin/php-cs-fixer fix --using-cache=no"
         ],
-        "cbf": [
-            "./vendor/bin/phpcbf ./ --standard=phpcs.xml"
-        ],
         "cs": [
-            "./vendor/bin/phpcs ./ --standard=phpcs.xml"
+            "./vendor/bin/phpcs"
         ]
     },
     "extra": {
