@@ -6,28 +6,21 @@ use PhpCsFixer\Finder;
 $rules = [
     'no_unused_imports'       => true,
     '@PSR2'                   => true,
+    '@PSR12'                  => true,
     'align_multiline_comment' => false,
-
-    'array_indentation'      => true,
-    'array_syntax'           => ['syntax' => 'short'],
-    'binary_operator_spaces' => [
-        'default' => 'align_single_space_minimal',
-        //'default' => 'single_space',
-        //'operators' => ['=>' => null],
+    'array_indentation'       => true,
+    'array_syntax'            => ['syntax' => 'short'],
+    'binary_operator_spaces'  => [
+        'default'   => 'single_space',
+        'operators' => ['=>' => 'align_single_space_minimal'],
     ],
     'blank_line_after_namespace'   => true,
     'blank_line_after_opening_tag' => true,
-    //'blank_line_before_statement'  => ['statements' => ['return'],],
-    'blank_line_before_statement' => ['statements' => ['break', 'continue', 'declare', 'return', 'throw', 'try']],
-    //'braces'                      => true,
-    'braces' => [
-        'allow_single_line_closure'                   => false,
-        'position_after_anonymous_constructs'         => 'same',
-        'position_after_control_structures'           => 'same',
-        'position_after_functions_and_oop_constructs' => 'next',
+    'blank_line_before_statement'  => [
+        'statements' => ['return'],
     ],
-    //'cast_spaces'                 => true,
-    'cast_spaces'                 => ['space' => 'none'],
+    'braces'                      => true,
+    'cast_spaces'                 => true,
     'class_attributes_separation' => [
         'elements' => [
             'const'        => 'one',
@@ -41,10 +34,12 @@ $rules = [
         'single_item_single_line'             => true,
         'single_line'                         => true,
     ],
-    'concat_space'                 => ['spacing' => 'none'],
+    'concat_space' => [
+        'spacing' => 'none',
+    ],
     'constant_case'                => ['case' => 'lower'],
     'declare_equal_normalize'      => true,
-    'elseif'                       => false, //true,
+    'elseif'                       => true,
     'encoding'                     => true,
     'full_opening_tag'             => true,
     'fully_qualified_strict_types' => true, // added by Shift
@@ -109,27 +104,29 @@ $rules = [
     'normalize_index_brace'                 => true,
     'not_operator_with_successor_space'     => true,
     'object_operator_without_whitespace'    => true,
-    'ordered_imports'                       => ['sort_algorithm' => 'alpha'],
-    'psr_autoloading'                       => true,
-    'phpdoc_indent'                         => true,
-    'phpdoc_inline_tag_normalizer'          => true,
-    'phpdoc_no_access'                      => true,
-    'phpdoc_no_package'                     => true,
-    'phpdoc_no_useless_inheritdoc'          => true,
-    'phpdoc_scalar'                         => true,
-    'phpdoc_single_line_var_spacing'        => true,
-    'phpdoc_summary'                        => false,
-    'phpdoc_to_comment'                     => false, // override to preserve user preference
-    'phpdoc_tag_type'                       => true,
-    'phpdoc_trim'                           => true,
-    'phpdoc_types'                          => true,
-    'phpdoc_var_without_name'               => true,
-    'self_accessor'                         => true,
-    'short_scalar_cast'                     => true,
-    'simplified_null_return'                => false, // disabled as "risky"
-    'single_blank_line_at_eof'              => true,
-    'single_blank_line_before_namespace'    => true,
-    'single_class_element_per_statement'    => [
+    'ordered_imports'                       => [
+        'sort_algorithm' => 'alpha',
+    ],
+    'psr_autoloading'                    => true,
+    'phpdoc_indent'                      => true,
+    'phpdoc_inline_tag_normalizer'       => true,
+    'phpdoc_no_access'                   => true,
+    'phpdoc_no_package'                  => true,
+    'phpdoc_no_useless_inheritdoc'       => true,
+    'phpdoc_scalar'                      => true,
+    'phpdoc_single_line_var_spacing'     => true,
+    'phpdoc_summary'                     => false,
+    'phpdoc_to_comment'                  => false, // override to preserve user preference
+    'phpdoc_tag_type'                    => true,
+    'phpdoc_trim'                        => true,
+    'phpdoc_types'                       => true,
+    'phpdoc_var_without_name'            => true,
+    'self_accessor'                      => true,
+    'short_scalar_cast'                  => true,
+    'simplified_null_return'             => false, // disabled as "risky"
+    'single_blank_line_at_eof'           => true,
+    'single_blank_line_before_namespace' => true,
+    'single_class_element_per_statement' => [
         'elements' => ['const', 'property'],
     ],
     'single_import_per_statement' => true,
@@ -166,7 +163,7 @@ $finder = Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return (new Config)
+return (new Config())
     ->setFinder($finder)
     ->setRules($rules)
     ->setRiskyAllowed(true)
