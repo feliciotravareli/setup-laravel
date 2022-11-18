@@ -12,9 +12,13 @@ composer create-project laravel/laravel exemplo
 
 [Setup](https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/doc/installation.rst)
 
+```
+composer require friendsofphp/php-cs-fixer --dev  
+```
+
 ### Config file
 
-`php-cs-fixer.php`
+`.php-cs-fixer.php`
 
 ```php
 <?php
